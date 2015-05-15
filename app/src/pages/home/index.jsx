@@ -16,20 +16,18 @@ module.exports = React.createClass({
       window.location.href = '#dashboard'
     }
   },
-  
+
   componentDidMount: function(){
     AppStateActions.setTitle(__('app.name'));
   },
 
   render: function(){
-     
+
     return (
       <IScroll>
-      
+
       <div className="text-center">
       <br /><br /><br />
-      <UI.Icon name="like" style={{fontSize: '220px', color: 'red', textShadow:'3px 3px 5px #464646'}} />
-
       <div>
 
         <UI.LinkButton cta  href="#login">

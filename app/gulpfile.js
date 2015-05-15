@@ -29,14 +29,15 @@ gulp.task('default', function(){
 });
 
 gulp.task('build-app', function(cb){
+	console.log('building')
 	runSequence(
-		'clean-build', 
-		//'compile-jsx', 
+		'clean-build',
+		//'compile-jsx',
 		'webpackify',
-//		'bundle-js', 
-		'compile-less', 
-		'fonts', 
-		'concat-css', 
+		//'bundle-js',
+		'compile-less',
+		'fonts',
+		'concat-css',
 		'copy-index',
 		'copy-resources',
 		'copy-config-xml',
@@ -58,7 +59,7 @@ gulp.task('compile-jsx', function(){
 
 	.pipe(gulp.dest('./build/'));
 });
-gulp.task('webpackify', function(cb){ 
+gulp.task('webpackify', function(cb){
 	webpack(webpackConfig, function(err, stats) {
 		if(err) throw new gutil.PluginError("webpack", err);
 		console.log("[webpack]", stats.toString({
@@ -75,14 +76,14 @@ gulp.task('compile-less', function(){
     //.pipe(flatten())
     .pipe(less({paths: './build/css/'}))
     .pipe(concat('lessed.css'))
-    
+
     .pipe(gulp.dest('./build/css/'));
   });
 gulp.task('concat-css', function(){
 	return gulp.src([
 		'./assets-src/bower/normalize-css/normalize.css',
 		'./assets-src/bower/snapjs/snap.css',
-		'./assets-src/bower/topcoat/css/topcoat-mobile-dark.css',
+		'./assets-src/bower/topcoat/css/topcoat-mobile-light.css',
 		'./assets-src/bower/topcoat-icons/css/icomatic.css',
 		'./build/css/lessed.css'
 		])
@@ -186,7 +187,7 @@ function getPluginsXML(){
 			pluginXml += ' version="' + p.version + '"';
 		}
 		pluginXml += '/>' + "\n";
-		xml += pluginXml;		
+		xml += pluginXml;
 	}
 	return xml;
 }

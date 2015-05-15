@@ -11,14 +11,8 @@ module.exports = React.createClass({
 		{label: __('Login'), url: '#login'},
 		{label: __('Signup'), url: '#signup'}
 		]
-		return ( 
+		return (
 			<div>
-				<UI.NavBar>
-					<UI.NavBarItem center full>
-						<UI.NavBarTitle center title={__('app.name')} />
-					</UI.NavBarItem>
-				</UI.NavBar>
-				<SubNav links={links} />
 				<div>
 					{this.props.children}
 				</div>
